@@ -5,15 +5,15 @@ This project is a simple C++ library management system that allows users to mana
 ## Project Structure
 
 ```
-cpp-library-project
-├── src
-│   ├── main.cpp          # Entry point of the application with main menu and program logic
-│   ├── Book.h           # Header file for the Book class
-│   ├── Book.cpp         # Implementation of the Book class methods
-│   ├── ReadingSession.h  # Header file for the ReadingSession class
-│   ├── Library.h        # Header file for the Library class
-│   └── Library.cpp      # Implementation of the Library class methods
-└── README.md            # Documentation for the project
+cpp-library-project/
+├── src/
+│   ├── main.cpp          # Contains the main function and menu logic
+│   ├── Library.cpp       # Implementation of the Library class
+│   ├── Library.h         # Declaration of the Library class
+│   ├── Book.cpp          # Implementation of the Book class
+│   ├── Book.h            # Declaration of the Book class
+├── build/                # (Optional) Directory for compiled binaries
+├── README.md             # (Optional) Project description and instructions
 ```
 
 ## Features
