@@ -1,18 +1,22 @@
 #ifndef LIBRARY_H
 #define LIBRARY_H
 
-#include <vector>
 #include "Book.h"
+#include <vector>
+#include <string>
 
 class Library {
 public:
+    Library() noexcept; // Default constructor
+
     void addBook(const Book& book);
-    void removeBook(const std::string& isbn);
+    bool removeBook(const std::string& isbn); // Return type matches definition
     Book* searchBook(const std::string& isbn);
-    std::vector<Book> getAllBooks() const;
+    void displayBooks() const; // Declaration for displayBooks
+    void sortBooksByTitle();   // Declaration for sortBooksByTitle
 
 private:
-    std::vector<Book> books;
+    std::vector<Book> books; // Collection of books
 };
 
 #endif // LIBRARY_H

@@ -1,34 +1,43 @@
 #include "Library.h"
-#include "Book.h"
-#include <vector>
+#include <iostream>
 #include <algorithm>
 
-Library::Library() {}
+// Default constructor for Library
+Library::Library() noexcept {}
 
 void Library::addBook(const Book& book) {
     books.push_back(book);
 }
 
 bool Library::removeBook(const std::string& isbn) {
-    auto it = std::remove_if(books.begin(), books.end(), [&isbn](const Book& book) {
-        return book.getISBN() == isbn;
-    });
-    if (it != books.end()) {
-        books.erase(it, books.end());
-        return true;
+    for (auto it = books.begin(); it != books.end(); ++it) {
+        if (it->getISBN() == isbn) {
+            books.erase(it);
+            return true; // Successfully removed
+        }
     }
-    return false;
+    return false; // Book not found
 }
 
-Book* Library::findBook(const std::string& isbn) {
+Book* Library::searchBook(const std::string& isbn) {
     for (auto& book : books) {
         if (book.getISBN() == isbn) {
             return &book;
         }
     }
-    return nullptr;
+    return nullptr; // Book not found
 }
 
-std::vector<Book> Library::getAllBooks() const {
-    return books;
+void Library::displayBooks() const {
+    for (const auto& book : books) {
+        std::cout << "Title: " << book.getTitle()
+                  << ", Author: " << book.getAuthor()
+                  << ", ISBN: " << book.getISBN() << std::endl;
+    }
+}
+
+void Library::sortBooksByTitle() {
+    std::sort(books.begin(), books.end(), [](const Book& a, const Book& b) {
+        return a.getTitle() < b.getTitle();
+    });
 }
